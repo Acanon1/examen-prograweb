@@ -29,17 +29,12 @@ function createBoard(numRows, numCols) {
     return rows
 }
 
-function mostrartictac(board){
-    for(let i=0;i<3;i++){
-        for(let j=0;j<3;j++){
-            board[i][j].seMuestra = false;
-        }
-    }
-}    
+  
 function letras() {
     let tictac = ["&#10006;" , "&#11093;", "&#10006;" , "&#11093;", "&#10006;" , "&#11093;",
     "&#10006;" , "&#11093;", "&#10006;"]
     let shuffled = tictac.sort(() => Math.random() - 0.5);
+    
     return shuffled;
     
 }
@@ -84,20 +79,21 @@ const casillaOnClick = (row, col) => {
     renderizarBoard(board)
     selec++
     if (selec==1){
-        if(casilla1.emoji == casilla.emoji){
-            casilla1=false;
+        casilla1!=casilla
+
             victoria++;
             if (victoria==9){
-                console.log("gano")
+                casillas.push({
+                    seMuestra : false
+                })
             }
         }
-    }
 }
+
 
 const main = () => {
     board = createBoard(3, 3) 
     renderizarBoard(board)
-    mostrartictac()
 }
 
 main()
